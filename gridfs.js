@@ -16,8 +16,6 @@
 			if(err) {
 				return fn(err);
 			}
-			console.log('Filename: ' + store.filename);
-			console.log(store);
 			if (("" + store.filename) === ("" + store.fileId) && store.metadata && store.metadata.filename) {
 				store.filename = store.metadata.filename;
 			}
@@ -30,7 +28,8 @@
 		db =  mongoose.connection.db;
 		options = parse(options);
 		options.metadata.filename = name;
-		return new GridStore(db, new ObjectID(),'w', options).open(function(err, file) {
+		var id = new ObjectID();
+		return new GridStore(db, id,'w', options).open(function(err, file) {
 			if(err) {
 				return fn(err);
 			}
