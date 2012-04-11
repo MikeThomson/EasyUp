@@ -25,4 +25,29 @@
 		});
 	};
 
+	exports.putFile = function(path, name, options, fn) {
+		var db;
+		db =  mongoose.connection.db;
+		options = parse(options);
+		options.metadata.filename = name;
+		return new GridStore(db, new ObjectID(),'w', options).open(function(err, file) {
+			if(err) {
+				return fn(err);
+			}
+			return file.writeFile(path, fn);
+		});
+	};
+
+	parse = function(options) {
+		var opts;
+		opts = {};
+		if (options.length > 0) {
+			opts = options[0];
+		}
+		if (!opts.metadata) {
+			opts.metadata = {};
+		}
+		return opts;
+	};
+
 }).call(this);
