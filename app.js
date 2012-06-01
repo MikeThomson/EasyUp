@@ -36,15 +36,9 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
-app.get('/index2', routes.index2);
-app.get('/file/upload', routes.fileUpload);
+app.get('/', routes.fileUpload);
 app.post('/file/upload', routes.fileUploadPost);
 app.get('/d/:id', routes.shortDownload);
-
-app.get('/test', function(res, req) {
-	shortener.generate('123123123', function(id){console.log('Logged: ' + id);});
-});
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -28,24 +28,6 @@
   </head>
 
   <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">monitorix-ui</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="/user/logout">Logout</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
 	<div class="container">
     <div class="content row">
       <%- body %>
@@ -63,6 +45,7 @@
 		   $(function() {
 		      $('#fileupload').fileupload({
 		         dataType: 'json',
+					url: '/file/upload',
 					start: function(e) {
 						$('#upload-progress-bar .bar').css('width', '100%');
 						$('#upload-progress-bar').addClass('active');

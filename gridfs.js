@@ -33,6 +33,9 @@
 			if(err) {
 				return fn(err);
 			}
+			console.log('Options:');
+			console.log(options);
+			console.log('Trying to write: ' + path);
 			return file.writeFile(path, fn);
 		});
 	};
